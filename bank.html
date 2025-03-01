@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank App - Income & Expense Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            width: 300px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background: green;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: darkgreen;
+        }
+
+        .balance {
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Bank App</h2>
+        <p class="balance">Balance: $<span id="balance">0</span></p>
+        <input type="number" id="amount" placeholder="Enter amount">
+        <button onclick="addIncome()">Add Income</button>
+        <button onclick="addExpense()">Add Expense</button>
+    </div>
+
+    <script>
+        let balance = 0;
+
+        function updateBalance() {
+            document.getElementById('balance').textContent = balance;
+        }
+
+        function addIncome() {
+            let amount = parseFloat(document.getElementById('amount').value);
+            if (!isNaN(amount) && amount > 0) {
+                balance += amount;
+                updateBalance();
+            }
+        }
+
+        function addExpense() {
+            let amount = parseFloat(document.getElementById('amount').value);
+            if (!isNaN(amount) && amount > 0) {
+                balance -= amount;
+                updateBalance();
+            }
+        }
+    </script>
+</body>
+
+</html>
